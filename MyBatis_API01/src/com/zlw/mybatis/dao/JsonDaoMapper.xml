@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须为指定的Mapper接口的地址  -->
+<mapper namespace="com.zlw.mybatis.dao.JsonDaoMapper">
+
+	<!-- id:对应的是接口中的方法名;返回值类型为对应pojo的类 -->
+	<select id="queryAll" resultType="json">
+		<!-- 需要映射的SQL语句 -->
+		select * from api
+	</select>
+	
+	<insert id="addJson" parameterType="json">
+	 insert into api values (#{api_id},#{api_name},#{api_sex},#{api_age})
+	</insert>
+	
+	<update id="updateJson" parameterType="json">
+		update api set 
+		
+			api_name = #{api_name},
+			api_sex = #{api_sex},
+			api_age = #{api_age}
+			where
+			api_id= #{api_id}
+	</update>
+	
+	
+	
+	<delete id="deleteJson" parameterType="json">
+		delete api where api_id = #{api_id}
+	</delete>
+</mapper>
